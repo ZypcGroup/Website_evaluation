@@ -1,0 +1,225 @@
+/*details.css*/
+
+#upload_body {
+    background: url(../img/back1.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.the_back {
+    background: #eeeeee;
+}
+
+
+#div_back img {
+    width: 100%;
+}
+
+.div_head {
+    background: #2e3032;
+    height: 5px;
+}
+
+.th_font th{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    background: #009688;
+    line-height: 1.7rem;
+}
+
+.td_font td{
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.7rem;
+
+}
+
+.video_h2 {
+    font-size: 2rem;
+}
+
+.layui-text h3 {
+    font-size: 1.5rem;
+}
+
+.layui-text p {
+    font-size: 1.0rem;
+}
+
+
+
+
+
+.details_body {
+    background: #eeeeee;
+}
+
+#the_pic {
+    overflow: hidden;
+}
+
+.details_pic {
+    width: 26rem;
+    padding: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.details_pic img {
+    display: inline-block;
+    width: 100%;
+}
+
+.info_body {
+    padding: 2rem;
+    overflow: hidden;
+}
+
+
+
+.get_vote {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.get_vote button {
+    height: 80px;
+    width: 350px;
+    font-size: 2.5rem;
+}
+
+.get_vote span {
+    color: #2e3032;
+    margin-left: 10px;
+}
+
+#the_pic1 {
+    display: none;
+}
+
+
+.footer {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #393D49;
+    color: white;
+}
+
+
+.xupt_logo {
+    width: 260px;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.foot_right {
+    text-align: right;
+}
+
+.zypc_logo {
+    width: 86px;
+    height: 86px;
+    margin-right: 25%;
+}
+
+.foot_two {
+    display: none;
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .foot_one {
+        display: none;
+    }
+
+    .foot_two {
+        display: block;
+    }
+    /*details页面媒体查询*/
+
+    .details_pic {
+        margin: 0 auto;
+    }
+
+    #the_pic {
+        display: none;
+    }
+
+    #the_pic1 {
+        display: block;
+    }
+
+
+    .th_font th{
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: white;
+        background: #009688;
+        line-height: 3rem;
+    }
+
+    .td_font td{
+        font-size: 2.3rem;
+        font-weight: 300;
+        line-height: 2.8rem;
+    }
+
+    .video_h2 {
+        font-size: 2.6rem;
+    }
+
+    .layui-text h3 {
+        font-size: 2rem;
+    }
+
+    .layui-text p {
+        font-size: 1.66rem;
+        line-height: 2.2rem;
+    }
+
+    .foot_left {
+        position: relative;
+        top:2.7rem;
+        left: 3rem;
+    }
+
+    .foot_right {
+        position: relative;
+        bottom: 0.8rem;
+        right: 3rem;
+    }
+
+    .foot_right a {
+        display: inline-block;
+
+    }
+
+    .copyright, .address {
+        font-size: 1.4rem;
+    }
+
+
+    .xupt_logo {
+        width: 300px;
+        height: auto;
+    }
+
+    .zypc_logo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .foot_tip {
+        font-size: 1.5rem;
+    }
+
+    .footer {
+        background: white;
+        color: darkgrey;
+        border-top: 0.1rem solid darkgray; 
+        padding-top: 1rem;
+    }
+}

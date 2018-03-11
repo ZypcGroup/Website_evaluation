@@ -1,0 +1,553 @@
+
+/*upload.css*/
+
+#upload_body {
+    background: url(../img/back1.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+
+#div_back img {
+    width: 100%;
+}
+
+
+
+.div_head {
+    background: #2e3032;
+    height: 5px;
+}
+
+.time_title {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #009688;
+}
+
+
+.footer {
+    padding-top: 50px;
+    background: #393D49;
+    color: white;
+    padding-bottom: 20px;
+
+}
+
+
+.xupt_logo {
+    width: 260px;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.zypc_logo {
+    margin-top: 17px;
+    width: 86px;
+    height: 86px;
+    margin-right: 20%;
+}
+
+.foot_body {
+    padding-bottom: 20px;
+}
+
+.upload_foot {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.thefooter a{
+    color: #009688;
+}
+
+/*index.css*/
+
+.get_h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+
+
+
+
+.layui-form-label {
+    overflow: visible !important;
+    font-weight: 900;
+}
+
+.the_body {
+    background: white;
+}
+
+
+.container_head {
+    margin-top: 20px;
+}
+
+.container_intro {
+    margin-top: 10px;
+}
+
+.container_body {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 3rem;
+}
+
+
+.detail_pic {
+    margin: 1rem auto;
+    display: block;
+    width: 22rem;
+}
+
+
+
+.detail_titlea, .detail_titleb {
+            text-align:center;
+		white-space:nowrap;
+		overflow:visible;
+}
+
+.detail_titlea {
+	white-space:nowrap;
+	
+}
+
+
+.the_url {
+    color: #009688;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.url_first {
+	color:black;
+}
+
+.detail_rink {
+    padding-bottom: 4px;
+text-align:center;
+}
+
+.tickets {
+    font-size: 1.27rem;
+    margin: 0.2rem;
+}
+
+
+
+
+
+
+
+.detail_vote {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detail_vote button {
+    padding-bottom: 4px;
+    font-size: 1.6rem;
+}
+
+.layui-table th {
+    background: #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    color: black !important;
+}
+
+.layui-table td {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.time_title i {
+    font-size: 1.3rem;
+}
+
+.time_title {
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+}
+
+.a_intro {
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0rem 1.8rem;
+    margin: 1rem;
+    text-indent: 2em;
+}
+
+.layui-tab-title li {
+    font-size: 2rem;
+}
+
+
+
+.zero {
+    margin-bottom: 80px;
+    height: 30px;
+}
+
+.up_body {
+    background: white;
+    padding: 30px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.message {
+    background: #27A9E3;
+    font-size: 1.6rem;
+    color: white;
+    width: 85%;
+    height: 25px;
+    position: relative;
+    padding: 18px 10px 18px 60px;
+    margin: 10px 0 0 -48px;
+
+}
+
+#darkbannerwrap {
+    background: url(../img/aiwrap.png);
+    width: 18px;
+    height: 10px;
+    margin: 0 0 20px -48px;
+    position: relative;
+}
+
+.footer {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #393D49;
+    color: white;
+}
+
+.xupt_logo {
+    width: 260px;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.foot_right {
+    text-align: right;
+}
+
+.zypc_logo {
+    width: 86px;
+    height: 86px;
+    margin-right: 25%;
+}
+
+
+#page_two {
+    height: 500px;
+}
+
+#the_load {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+#the_tab {
+    margin-bottom: 6rem;
+}
+
+
+ .foot_two {
+        display: none;
+    }
+
+.rink_block {
+    display: inline-block;
+    }
+
+.detail_vote {
+    display: block;
+}
+#vote_button {
+    border-radius: 1.6rem;
+    border: 0.1rem #009688 solid; 
+    padding: 0.6rem;
+    background: #009688;
+    color: white;
+    font-size: 1rem;
+    width: 8rem;
+    margin: 1.5rem auto;
+}
+.test, .test1 {
+    color: #FF5722;
+    font-size: 1rem;
+	display:inline-block;
+	width:3.5rem;
+}
+
+.detail_rink p{
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    color: #ccc;
+}
+
+.detail_rink span {
+    border-radius: 1.6rem;
+    border: 0.1rem #ccc solid; 
+    padding: 1rem;
+	text-align:right;
+}
+
+.the_ele {
+	height:27rem;
+	overflow:hidden;
+	text-align:center;
+	
+}
+
+.the_ele img {
+	width:70%;
+}
+
+.the_item {
+	padding-bottom: 1rem;
+	border-bottom:0.1rem #ccc solid;
+	
+}
+
+@media screen and (max-width: 992px) {
+.detail_titlea, .detail_titleb {
+    height: 2rem;
+        text-align:center;
+	margin-top:2rem;
+}
+.the_url {
+        font-size: 1.2rem;
+    }
+.the_ele img {
+	width:70%;
+}
+.the_ele {
+	height:auto;
+}
+
+    .detail_rink p{
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.detail_rink span {
+    border-radius: 1.6rem;
+    border: 0.1rem #ccc solid; 
+    padding: 1rem;
+}
+    .test, .test1 {
+    color: #FF5722;
+    font-size: 1rem;
+	display:inline-block;
+	width:60px;
+text-align:right;
+}
+    #vote_button {
+    border-radius: 1.6rem;
+    border: 0.1rem #009688 solid; 
+    padding: 1rem;
+    background: #009688;
+    color: white;
+    font-size: 2rem;
+    position :  relative;
+    top:1rem;
+    left: 2rem;
+	display:inline-block;
+	width:14rem;
+	font-size:2,5rem;
+}
+
+    .rink_block {
+display: inline-block;
+    width: 28%
+    }
+
+.detail_vote {
+    display: inline-block;width: 40%
+}
+    .detail_pic {
+        width: 80%;
+    }
+
+     .foot_one {
+        display: none;
+    }
+
+    .foot_two {
+        display: block;
+    }
+
+
+
+    #the_tab {
+        border: none;
+    }
+
+    #the_tab li {
+        font-size: 2.2rem;
+        height: 4rem;
+        text-align: center;
+        line-height: 4rem;
+        overflow: hidden;
+    }
+
+    .li_one {
+        width: 25%;
+    }
+    .li_two {
+        width: 25%;
+    }
+    .li_three {
+        width: 20%;
+    }
+    .li_four {
+        width: 25%;
+    }
+
+    .url_first {
+        margin-top: 1rem;
+    }
+
+    .detail_vote {
+        margin-top: 3rem;
+    }
+
+    .get_h1 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 1rem 0.5rem 0.1rem 1rem;
+    }
+
+    .time_title i {
+        font-size: 0.9rem;
+    }
+
+    .time_title {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .layui-table th, .layui-table td {
+        white-space: nowrap;
+        font-size: 1rem;
+        margin: 1rem 0.001rem;
+        font-weight: 300;
+        text-align: center;
+        padding: 0.2rem;
+    }
+
+    .a_intro {
+        font-size: 1rem;
+        padding: 0rem 0.5rem;
+        line-height: 1.5rem;
+    }
+
+
+
+
+
+
+    .detail_title {
+        height: 3rem;
+        margin-top: 1rem;
+    }
+
+    .detail_rink {
+	margin-top:1rem;
+}
+
+    .layui-badge {
+        height: 40px;
+        width: 4rem;
+    }
+
+    .detail_title h3, .detail_rink button, .detail_rink span {
+        font-size: 1.2rem;
+        font-weight: 300;
+        height: 3.5rem;
+    }
+
+    .tickets span {
+        height: 2.8rem;
+        width: 5rem;
+    }
+
+    .detail_vote button {
+        font-size: 2.6rem;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+
+    #the_load {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        height: 60px;
+    }
+
+
+    .foot_left {
+        position: relative;
+        top:2.7rem;
+        left: 3rem;
+    }
+
+    .foot_right {
+        position: relative;
+        bottom: 0.8rem;
+        right: 3rem;
+    }
+
+    .foot_right a {
+        display: inline-block;
+
+    }
+
+    .copyright, .address {
+        font-size: 1.4rem;
+    }
+
+    .xupt_logo {
+        width: 300px;
+        height: auto;
+    }
+
+    .zypc_logo {
+        width: 200px;
+        height: 200px;
+    }
+
+
+
+    .test, .test1 {
+        font-size: 2.6rem;
+        position: relative;
+        top:0.8rem;
+
+    }
+
+    .footer {
+        background: white;
+        color: darkgrey;
+        border-top: 0.1rem solid darkgray; 
+        padding-top: 1rem;
+    }
+
+	.the_item {
+	border-bottom:0.1rem #ccc solid;
+	padding-bottpm:4rem;
+	padding-top:4rem;
+	}
+
+
+}

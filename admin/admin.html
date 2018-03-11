@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统</title>
+    <link rel="stylesheet" href="../layui-master/dist/css/layui.css">
+
+</head>
+
+
+<body style="background: #2F4056">
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md8 layui-col-md-offset2 layui-bg-gray" style="margin-top: 200px">
+            <div class="layui-row">
+                <div class="layui-col-md8 layui-col-md-offset2">
+                    <h1 style="font-size: 2.5rem; text-align: center;margin: 1rem">后台查询系统</h1>
+                    <span style="color: #FF5722">目前提供查看，删除，审核报名状态与查看作品得分成分功能</span>
+                    <form class="layui-form layui-form-pane">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">作品名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="a_name" required  lay-verify="required" placeholder="请输入作品名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">选择参数类型</label>
+                            <div class="layui-input-block">
+                                <select name="type" lay-verify="required">
+                                    <option value="">请选择</option>
+                                    <option value="1">互联网应用组</option>
+                                    <option value="2">特色网站组</option>
+                                    <option value="3">学院组</option>
+                                    <option value="4">职能部门组</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="margin: 2rem 0rem 2rem 14rem;">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-normal  layui-btn-big" lay-submit lay-filter="go">查询</button>
+                                <button type="reset" class="layui-btn layui-btn-primary  layui-btn-big">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md10 layui-col-md-offset1" style="text-align: center; margin-top: 4rem">
+
+            <h1 style="color: #FF5722;font-size: 2rem">当前报名情况</h1>
+
+            <div class="layui-tab" style="background: floralwhite" lay-filter="find_all">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">互联网应用组</li>
+                    <li>特色网站组</li>
+                    <li>学院组</li>
+                    <li>职能部门组</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show"></div>
+                    <div class="layui-tab-item"></div>
+                    <div class="layui-tab-item"></div>
+                    <div class="layui-tab-item"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="../layui-master/dist/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function change_info(p) {
+        var get_f = p.parentNode.parentNode.childNodes;
+        var get_name = get_f[1].innerText;
+        var get_oldtype = get_f[8].innerText;
+        var get_oldchange = p.innerText;
+        if( get_oldchange=="已通过")
+        {
+            var get_change = 1;
+        } else if( get_oldchange=="未审核"){
+            var get_change = 0;
+        } else {}
+        if( get_oldtype =="互联网应用组")
+        {
+            var get_type = 1;
+        } else if(get_oldtype=="特色网站组") {
+            var get_type = 2;
+        } else if(get_oldtype=="学院组") {
+            var get_type = 3;
+        } else if(get_oldtype=="职能部门组") {
+            var get_type = 4;
+        } else {}
+         $.ajax({
+             async:false,
+             url: 'bground.php',
+             type:'post',
+             data: {
+                 m: 'modify',
+                 a_name: get_name,
+                 type: get_type,
+                 change: get_change
+             },
+             success:function (data) {
+                 var old_data = JSON.parse(data);
+                 var new_data = Number(old_data.flag);
+                 if( new_data==1)
+                 {
+                     jQuery(p).removeClass();
+                     jQuery(p).addClass('layui-btn');
+                     jQuery(p).text('已通过');
+                     localStorage.setItem('the_state',1);
+                 } else {
+                     jQuery(p).removeClass();
+                     jQuery(p).addClass('layui-btn layui-btn-warm');
+                     jQuery(p).text('未审核');
+                     localStorage.setItem('the_state',0);
+                 }
+             }
+         })
+    }
+
+    function del_info(p) {
+        layer.confirm('是否删除？', {icon: 3, title:'提示'}, function(index){
+
+            var get_f = p.parentNode.parentNode.childNodes;
+            var get_name = get_f[1].innerText;
+            var get_oldtype = get_f[8].innerText;
+            if( get_oldtype =="互联网应用组")
+            {
+                var get_type = 1;
+            } else if(get_oldtype=="特色网站组") {
+                var get_type = 2;
+            } else if(get_oldtype=="学院组") {
+                var get_type = 3;
+            } else if(get_oldtype=="职能部门组") {
+                var get_type = 4;
+            } else {}
+            $.ajax({
+                async:false,
+                url: 'bground.php',
+                type:'post',
+                data: {
+                    m: 'delete',
+                    a_name: get_name,
+                    type: get_type
+                },
+                success: function (data) {
+                    jQuery(p).parents('table').remove();
+                    alert("删除成功");
+                    location.reload()
+                },
+                error: function (data) {
+                    jQuery(p).parents('table').remove();
+                    alert("删除成功");
+                    location.reload()
+                }
+
+            });
+
+            layer.close(index);
+        });
+
+    }
+
+
+
+    function edit_info(p) {
+        var get_f = p.parentNode.parentNode.childNodes;
+        var get_name = get_f[1].innerText;
+        var get_oldtype = get_f[8].innerText;
+        if (get_oldtype == "互联网应用组") {
+            var get_type = 1;
+        } else if (get_oldtype == "特色网站组") {
+            var get_type = 2;
+        } else if (get_oldtype == "学院组") {
+            var get_type = 3;
+        } else if (get_oldtype == "职能部门组") {
+            var get_type = 4;
+        } else { }
+        
+        
+        $.ajax({
+            url: 'bground.php',
+            type: 'post',
+            data: {
+                m: 'select_msg',
+                a_name: get_name,
+                type: get_type
+            },
+            success: function (data) {
+                var old_data = JSON.parse(data);
+                var new_data = old_data.msg
+                localStorage.setItem('edit_name',new_data.a_name);
+                localStorage.setItem('edit_type',new_data.type);
+                layer.open({
+                    type:1
+                    , closeBtn:0
+                    ,shadeClose:true
+                    ,btn: ['修改上传','上传修改图片','取消']
+                    ,title: '报名信息修改'
+                    , area: '900px'
+                    , content:  '<div class="layui-fluid"><div class="layui-row" id="demo"><div class="layui-col-md10 layui-col-md-offset1"><form class="layui-form" lay-filter="edit" name="edit"><div class="layui-form-item"><label class="layui-form-label">应用/网站名称</label> <div class="layui-input-block"><input disabled="disabled" type="text" name="a_name" required  lay-verify="required" placeholder="请输入应用/网站名称" autocomplete="off" class="layui-input" value="' + new_data.a_name +'"></div></div><div class="layui-form-item"><label class="layui-form-label">单位名称</label> <div class="layui-input-block"><input type="text" name="u_name" required  lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input" value="'+ new_data.u_name +'"></div></div><div class="layui-form-item"><label class="layui-form-label">访问方式/域名</label> <div class="layui-input-block"><input type="text" name="url" required  lay-verify="required" placeholder="访问方式/域名" autocomplete="off" class="layui-input" value="'+new_data.url+'"> </div></div><div class="layui-form-item"><div class="layui-inline"><label class="layui-form-label">负责人信息</label><div class="layui-input-inline" style="width: 100px;"><input type="text" name="manager" lay-verify="require" require placeholder="姓名" autocomplete="off" class="layui-input" value="'+ new_data.manager + '"></div><div class="layui-form-mid">-</div><div class="layui-input-inline" style="width: 100px;"><input type="text" name="m_id" placeholder="学号/工号" lay-verify="require" require autocomplete="off" class="layui-input" value="' + new_data.m_id +'"></div><div class="layui-form-mid" value="' + new_data.m_id + '">-</div><div class="layui-input-inline" style="width: 100px;"><input type="text" name="m_class" placeholder="部门/班级" lay-verify="required" require autocomplete="off" class="layui-input" value="' + new_data.m_class + '"></div><div class="layui-form-mid">-</div><div class="layui-input-inline" style="width: 100px;"><input type="text" name="m_phone" placeholder="手机号码" lay-verify="required" require autocomplete="off" class="layui-input" value="' + new_data.m_phone + '"></div></div></div><div class="layui-form-item"><label class="layui-form-label">应用建立时间</label> <div class="layui-input-block"><input type="text" name="time" required  lay-verify="required" placeholder="格式为 2017-10-01" autocomplete="off" class="layui-input" value="' + new_data.time + '"></div></div><div class="layui-form-item"><label class="layui-form-label">比赛经历</label> <div class="layui-input-block"><input type="text" name="flag" required  lay-verify="required" placeholder="有为1 无为0" autocomplete="off" class="layui-input " value="' + new_data.flag + '"></div></div><div class="layui-form-item"><label class="layui-form-label">参赛类型/</label> <div class="layui-input-block"><input type="text" name="type" required  lay-verify="required" placeholder="参赛类型为1（互联网应用） 2（特色网站） 3（学院组） 4（职能部门组）" autocomplete="off" class="layui-input" value="' + new_data.type + '"></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">基本情况介绍</label><div class="layui-input-block"><textarea id="b_text" name="b_position" placeholder="请输入基本情况介绍"  lay-verify="required" required class="layui-textarea"></textarea></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">使用情况介绍</label><div class="layui-input-block"><textarea id="u_text" name="u_position" placeholder="请输入使用情况介绍"  lay-verify="required" required class="layui-textarea"></textarea></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">日常管理介绍</label><div class="layui-input-block"><textarea id="d_text" name="d_position" placeholder="请输入日常管理介绍"  lay-verify="required" required class="layui-textarea"></textarea></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">应用特色介绍</label><div class="layui-input-block"><textarea id="a_text" name="a_position" placeholder="请输入应用特色介绍"  lay-verify="required" required class="layui-textarea"></textarea></div></div></form></div><div class="layui-row"></div></div>'
+                    ,success: function (layero, index) {
+                            document.getElementById("b_text").value= new_data.b_position;
+                            document.getElementById("u_text").value = new_data.u_position;
+                            document.getElementById("d_text").value = new_data.d_position;
+                            document.getElementById("a_text").value = new_data.a_position;
+                        }
+                    ,yes: function(index, layero) {
+                        
+                        $.ajax({
+                            type:"post",
+                            url:"bground.php",
+                            data: {
+                                m:'update_msg',
+                                a_name:edit.a_name.value,
+                                u_name: edit.u_name.value,
+                                manager: edit.manager.value,
+                                m_phone: edit.m_phone.value,
+                                m_class: edit.m_class.value,
+                                m_id: edit.m_id.value,
+                                url: edit.url.value,
+                                time: edit.time.value,
+                                type: edit.type.value,
+                                flag: edit.flag.value,
+                                b_position: edit.b_position.value,
+                                u_position: edit.u_position.value,
+                                d_position: edit.d_position.value,
+                                a_position: edit.a_position.value
+                            },
+
+                            success: function(data) {
+                                alert("修改成功");
+                                                            }
+                        })
+                    }
+                    ,btn2: function (index,layero) {
+                       $('#demo').append('<button class="layui-btn layui-btn-danger" type="button" id="edit_img">点击上传图片</button>');
+
+                        layui.use('upload', function () {
+                            var upload = layui.upload;
+                            upload.render({
+                                elem: '#edit_img' //绑定元素
+                                , url: 'bground.php' //上传接口
+                                , exts: 'jpg|png|gif'
+                                , size: 10240
+                                ,method: 'post'
+                                , data: {
+                                    m: 'update_img',
+                                    n: localStorage.getItem('edit_name'),
+                                    type: localStorage.getItem('edit_type')
+                                }
+                                , done: function (res) {
+                                    
+                                    alert("图片修改成功");
+                                    //location.reload()
+                                }
+                                , error: function () {
+                                    alert("图片修改成功");
+				 //location.reload()
+
+                                }
+                            });
+                        });
+
+                        return false;
+                    }
+                });
+            },
+            error: function (data) {
+                alert("js error");
+            }
+
+        });
+    }
+</script>
+
+<script>
+    layui.use(['form','layer','table','element'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        var table = layui.table;
+        var element = layui.element;
+
+        $.ajax({
+            type:'post',
+            url:'bground.php',
+            data:{
+                m:'get_ascd',
+                type:1
+            },
+            success:function (data) {
+                var new_data = JSON.parse(data);
+                for( var i = 0; i<new_data.length;i++)
+                {
+                    if( new_data[i].deline == 1)
+                    {
+                        new_data[i].text = '已通过';
+                        var changecolor = "layui-btn";
+                    } else {
+                        new_data[i].text = '未审核';
+                        var changecolor = "layui-btn layui-btn-warm";
+                    }
+                    var real_type = '互联网应用组';
+                    var x = i + 1;
+
+                    var check_type = new_data[i].type;
+                    localStorage.setItem('check_type',check_type);
+
+                    $('.layui-tab-item:eq(0)').append('<hr class="layui-bg-orange" style="margin: 2rem 0rem"><p style="font-size: 1.8rem; color: #009688;text-align: center">' + x + '</p><table class="layui-table"><colgroup> <col width="80px"><col width="60px"><col width="50px"><col width="80px"><col width="80px"><col width="80px"><col width="50px"><col width="140px"></colgroup><thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>得票数</th><th>审核状态</th></tr></thead><tbody><tr> <td>' + new_data[i].a_name + '</td> <td>' + new_data[i].u_name +'</td> <td>' + new_data[i].manager + '</td><td>' + new_data[i].m_id + '</td><td>' + new_data[i].m_phone + '</td><td>' + real_type + '</td><td>' + new_data[i].ticket + '</td><td><button class="'+ changecolor +'" onclick="change_info(this)">' + new_data[i].text + '</button><button class="layui-btn layui-btn-danger"  onclick="del_info(this)">删除</button><button class="layui-btn layui-btn-primary" onclick="edit_info(this)">编辑</button></td></tr></tbody></table>');
+
+                }
+            }
+        });
+
+        element.on('tab(find_all)', function(data){
+            var get_index = data.index+1;
+            if(get_index==1)
+            {
+                $('.layui-tab-item:eq(0)').empty();
+            } else if(get_index==2) {
+                $('.layui-tab-item:eq(1)').empty();
+            } else if(get_index==3) {
+                $('.layui-tab-item:eq(2)').empty();
+            } else if(get_index==4) {
+                $('.layui-tab-item:eq(3)').empty();
+            } else {}
+            $.ajax({
+                type:'post',
+                url:'bground.php',
+                data:{
+                    m:'get_ascd',
+                    type:data.index+1
+                },
+                success:function (data) {
+
+                    var new_data = JSON.parse(data);
+                    for( var i = 0; i<new_data.length;i++)
+                    {
+                        //开始循环
+                        localStorage.setItem('the_state',new_data[i].deline);
+
+                        if( new_data[i].deline == 1)
+                        {
+                            new_data[i].text = '已通过';
+                            var changecolor = "layui-btn";
+                        } else {
+                            new_data[i].text = '未审核';
+                            var changecolor = "layui-btn layui-btn-warm";
+                        }
+                        var check_type = new_data[i].type;
+                        localStorage.setItem('check_type',check_type);
+
+                        var y = i + 1;
+
+                        if(check_type==1)
+                        {
+                            var real_type = '互联网应用组';
+                            $('.layui-tab-item:eq(0)').append('<hr class="layui-bg-orange" style="margin: 2rem 0rem"><p style="font-size: 1.8rem; color: #009688;text-align: center">' + y + '</p><table class="layui-table"><colgroup> <col width="80px"><col width="60px"><col width="50px"><col width="80px"><col width="80px"><col width="80px"><col width="50px"><col width="140px"></colgroup><thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>得票数</th><th>审核状态</th></tr></thead><tbody><tr> <td>' + new_data[i].a_name + '</td> <td>' + new_data[i].u_name +'</td> <td>' + new_data[i].manager + '</td><td>' + new_data[i].m_id + '</td><td>' + new_data[i].m_phone + '</td><td>' + real_type + '</td><td>' + new_data[i].ticket + '</td><td><button class="'+ changecolor +'" onclick="change_info(this)">' + new_data[i].text + '</button><button class="layui-btn layui-btn-danger"  onclick="del_info(this)">删除</button><button class="layui-btn layui-btn-primary" onclick="edit_info(this)">编辑</button></td></tr></tbody></table>');
+
+                        } else if(check_type==2)
+                        {
+                            var real_type = '特色网站组';
+                            $('.layui-tab-item:eq(1)').append('<hr class="layui-bg-orange" style="margin: 2rem 0rem"><p style="font-size: 1.8rem; color: #009688;text-align: center">' + y + '</p><table class="layui-table"><colgroup> <col width="80px"><col width="60px"><col width="50px"><col width="80px"><col width="80px"><col width="80px"><col width="50px"><col width="140px"></colgroup><thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>得票数</th><th>审核状态</th></tr></thead><tbody><tr> <td>' + new_data[i].a_name + '</td> <td>' + new_data[i].u_name +'</td> <td>' + new_data[i].manager + '</td><td>' + new_data[i].m_id + '</td><td>' + new_data[i].m_phone + '</td><td>' + real_type + '</td><td>' + new_data[i].ticket + '</td><td><button class="'+ changecolor +'" onclick="change_info(this)">' + new_data[i].text + '</button><button class="layui-btn layui-btn-danger"  onclick="del_info(this)">删除</button><button class="layui-btn layui-btn-primary" onclick="edit_info(this)">编辑</button></td></tr></tbody></table>');
+
+                        } else if(check_type==3)
+                        {
+                            var real_type = '学院组';
+                            $('.layui-tab-item:eq(2)').append('<hr class="layui-bg-orange" style="margin: 2rem 0rem"><p style="font-size: 1.8rem; color: #009688;text-align: center">' + y + '</p><table class="layui-table"><colgroup> <col width="80px"><col width="60px"><col width="50px"><col width="80px"><col width="80px"><col width="80px"><col width="50px"><col width="140px"></colgroup><thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>得票数</th><th>审核状态</th></tr></thead><tbody><tr> <td>' + new_data[i].a_name + '</td> <td>' + new_data[i].u_name +'</td> <td>' + new_data[i].manager + '</td><td>' + new_data[i].m_id + '</td><td>' + new_data[i].m_phone + '</td><td>' + real_type + '</td><td>' + new_data[i].ticket + '</td><td><button class="'+ changecolor +'" onclick="change_info(this)">' + new_data[i].text + '</button><button class="layui-btn layui-btn-danger"  onclick="del_info(this)">删除</button><button class="layui-btn layui-btn-primary" onclick="edit_info(this)">编辑</button></td></tr></tbody></table>');
+
+                        } else if(check_type==4)
+                        {
+                            var real_type = '职能部门组';
+                            $('.layui-tab-item:eq(3)').append('<hr class="layui-bg-orange" style="margin: 2rem 0rem"><p style="font-size: 1.8rem; color: #009688;text-align: center">' + y + '</p><table class="layui-table"><colgroup> <col width="80px"><col width="60px"><col width="50px"><col width="80px"><col width="80px"><col width="80px"><col width="50px"><col width="140px"></colgroup><thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>得票数</th><th>审核状态</th></tr></thead><tbody><tr> <td>' + new_data[i].a_name + '</td> <td>' + new_data[i].u_name +'</td> <td>' + new_data[i].manager + '</td><td>' + new_data[i].m_id + '</td><td>' + new_data[i].m_phone + '</td><td>' + real_type + '</td><td>' + new_data[i].ticket + '</td><td><button class="'+ changecolor +'" onclick="change_info(this)">' + new_data[i].text + '</button><button class="layui-btn layui-btn-danger"  onclick="del_info(this)">删除</button><button class="layui-btn layui-btn-primary" onclick="edit_info(this)">编辑</button></td></tr></tbody></table>');
+
+                        } else {
+                            var real_type = '错误';
+                        }
+
+
+                    }
+                }
+            });
+        });
+
+
+        
+        form.on('submit(go)', function(data){
+            $.ajax({
+                url: 'bground.php',
+                type: 'post',
+                data: {
+                    m:'select_msg',
+                    a_name: data.field.a_name,
+                    type: data.field.type
+                },
+                success: function (data) {
+                    //接受信息 data.
+                    var old_data = JSON.parse(data);
+                    var new_data = old_data.msg;
+
+                    if(new_data)
+                    {
+
+                        if( new_data.deline == 1)
+                        {
+                            new_data.text = '已通过';
+                            var changecolor = "layui-btn";
+                        } else {
+                            new_data.text = '未审核';
+                            var changecolor = "layui-btn layui-btn-warm";
+                        }
+                        var check_type = new_data.type;
+
+                        if(check_type==1)
+                        {
+                            var real_type = '互联网应用组';
+                        } else if(check_type==2)
+                        {
+                            var real_type = '特色网站组';
+                        } else if(check_type==3)
+                        {
+                            var real_type = '学院组';
+                        } else if(check_type==4)
+                        {
+                            var real_type = '职能部门组';
+                        } else {
+                            var real_type = '错误';
+                        }
+                        layer.open({
+                            title: '报名信息查询'
+                            ,area: '900px'
+                            ,content: '<table class="layui-table"> <colgroup> <col><col><col><col><col><col><col width="110px"> </colgroup> <thead> <tr> <th>作品名称</th><th>单位名称</th> <th>负责人</th><th>负责人工号</th><th>负责人联系方式</th><th>参赛类型</th><th>编辑报名状态</th></tr></thead> <tbody><tr> <td>'+ new_data.a_name +'</td> <td>' + new_data.u_name +'</td> <td>' + new_data.manager + '</td><td>' + new_data.m_id + '</td><td>' + new_data.m_phone + '</td><td>' + real_type + '</td><td> <button id="change_li" class="'+ changecolor +'" onclick="change_info(this)">' + new_data.text + '</button><button class="layui-btn layui-btn-danger" id="del_li" onclick="del_info(this)">删除</button> </td></td></tr></tbody></table>' + ' <table class="layui-table"> <colgroup> <col><col></colgroup><thead><tr><th>老师投票数</th><th>学生投票数</th></tr></thead><tbody><tr><td>' + old_data.t_ticket + '</td><td>' + old_data.s_ticket + '</td></tr></tbody></table> '
+                        });
+                    } else {
+                        alert('未查询到此记录');
+                    }
+
+
+                }
+            });
+
+
+            return false; //阻止表单跳转
+        });
+
+
+
+
+    });
+</script>
+
+</body>
+</html>

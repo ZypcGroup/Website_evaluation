@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作品详情</title>
+    <link rel="stylesheet" href="layui-master/dist/css/layui.css">
+    <link rel="stylesheet" href="style/css/details.css">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div id="div_back"><img src="style/img/back.jpg"></div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="div_head"></div>
+        </div>
+    </div>
+
+    <div class="layui-row details_body">
+
+        <div class="layui-col-md4" id="the_pic">
+            <div class="details_pic">
+                <img rel="展示图片" id="demo_pic" layer-src="./style/img/404.png" alt="应用展示">
+            </div>
+        </div>
+        <div class="layui-col-md8 layui-col-sm12 info_body">
+            <div class="layui-row">
+                <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="50%">
+                            <col width="50%">
+                        </colgroup>
+                        <thead>
+                        <tr class="th_font">
+                            <th>应用名称/网站名称</th>
+                            <th>单位名称</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="td_font">
+                            <td class="info_name" id="info_name">XXXXXXXXXXX </td>
+                            <td class="info_from" id="info_from">XXXXXXXXXXXX</td>
+                           
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr class="th_font">
+                                <th>负责人</th>
+                                <th>访问方式/域名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="td_font">
+                                <td class="info_owner" id="info_owner">XXXXXXXXX</td>
+                                <td class="info_url" id="info_url">
+                                    <a id="true_url">XXXXXXXXXX</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+
+            <div class="layui-row" id="the_pic1">
+                <div class="layui-col-xs12">
+                    <div class="details_pic">
+                        <img id="demo_pic1" layer-src="./style/img/404.png" alt="应用展示">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md4 layui-col-md-offset4" style="text-align: center">
+                    <h2 class="video_h2">参选作品介绍</h2>
+                </div>
+                <hr class="layui-bg-green">
+                <div class="layui-row">
+                    <div class="layui-col-md12" style="background: white;padding: 40px">
+                        <ul class="layui-timeline">
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">基本情况介绍</h3>
+                                    <p id="b_po">
+
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">使用情况介绍</h3>
+                                    <p id="u_po">
+
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">日常管理介绍</h3>
+                                    <p id="d_po">
+
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">应用特色介绍</h3>
+                                    <p id="a_po">
+
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="layui-col-md8 layui-col-md-offset2 get_vote">
+            <div class="layui-row">
+                <button class="layui-btn layui-btn-big" id="true_button">给TA投一票</button>
+            </div>
+            <div class="layui-row">
+                <span class="foot_tip">提示：一个账号只能投一次票哦</span>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="layui-row footer">
+        <div class="layui-col-md10 layui-col-md-offset1 foot_one">
+            <div class="layui-col-md-8 layui-col-sm-8 layui-col-xs-8 foot_body">
+                <div class="layui-row">
+                    <div class="layui-col-md8 layui-col-sm8 layui-col-xs8 foot_left">
+                        <img src="https://zypc.xupt.edu.cn/images/xupt-logo.png" class="xupt_logo">
+                        <p class="copyright">© 2017 西安邮电大学信息中心 智邮普创工作室</p>
+                        <p class="address">地址：图书馆514室 电话：88166083</p>
+                    </div>
+                    <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 foot_right">
+                        <a href="http://www.xupt.edu.cn" target="_blank"><img class="zypc_logo" src="https://zypc.xupt.edu.cn/images/xyzx-qrcode.png"></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-sm12 layui-col-xs12 foot_two" style="text-align: center;">
+            <p style="font-size: 1.3rem;display: inline-block">© 2017 西安邮电大学信息中心
+                <a href="https://zypc.xupt.edu.cn/" style="font-size: 1.3rem;color:#1aa194;display: inline-block;">智邮普创工作室</a>
+            </p>
+    </div>
+    </div>
+</div>
+
+
+
+<script src="layui-master/dist/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    layui.use('layer', function () {
+            var layer = layui.layer;
+
+            layer.photos({
+                photos: '.details_pic'
+                , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+            }); 
+            
+        });
+
+
+
+
+
+    function turnString(testStr) {
+        var resultStr = testStr.replace(/\ +/g, ""); //去掉空格
+        resultStr = testStr.replace(/[ ]/g, "");    //去掉空格
+        resultStr = testStr.replace(/[\r\n]/g, ""); //去掉回车换行
+        return resultStr;
+    }
+
+
+    //获取点击值与类型值
+    var get_check = localStorage.getItem("the_check");
+    var the_check = turnString(get_check);
+
+    var get_type = localStorage.getItem('get_hidetype');
+    var gett_type = turnString(get_type);
+    var the_type = parseInt(gett_type);
+
+    //获取作品详情信息
+    $.ajax({
+        url: 'detail.php',
+        data: {
+            m: 'get_detail',
+            a_name: the_check,
+            type: the_type
+        },
+        type:'post',
+        success: function (data) {
+            var data = JSON.parse(data);
+            $('#demo_pic').attr('src',data.img_addr);
+            $('#demo_pic1').attr('src',data.img_addr);
+            $('#info_name').text(data.a_name);
+            $('#info_from').text(data.u_name);
+            $('#info_owner').text(data.manager);
+            $('#true_url').text(data.url);
+            //$('#info_time').text(data.time);
+            $('#true_url').attr('href',data.url);
+
+            $('#b_po').text(data.b_position);
+            $('#u_po').text(data.u_position);
+            $('#d_po').text(data.d_position);
+            $('#a_po').text(data.a_position);
+
+
+        }
+    });
+
+
+    //判断是否投过票
+    $.ajax({
+        url:'detail.php',
+        type: 'post',
+        data: {
+            m: "teac_vote",
+            a_name: the_check,
+            type: the_type
+        },
+        success: function (data) {
+            var data = JSON.parse(data);
+            if ( data.flag == 1 )
+            {
+
+            } else {
+                //关闭投票
+                $('#true_button').addClass('layui-btn-disabled');
+                $('.foot_tip').text('提示：您的投票次数已用完');
+                $('.foot_tip').css('color','#FF5722');
+            }
+        }
+
+    });
+
+    //投票点击
+    $('#true_button').click(function () {
+
+        $.ajax({
+            async:false,
+            url: 'detail.php',
+            type: 'post',
+            data: {
+                m: 'vote',
+                a_name: the_check,
+                type: the_type
+            },
+            success: function (data) {
+                var data = JSON.parse(data);
+                //检测投票成功与否
+                if ( data.flag == 1 )
+                {
+                    layer.msg('投票成功', {icon: 1});
+                }
+                $('#true_button').addClass('layui-btn-disabled');
+                $('.foot_tip').text('提示：您已经为该作品投过票了哦');
+                $('.foot_tip').css('color','#FF5722');
+            }
+
+        })
+
+
+    });
+
+
+
+</script>
+
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</body>
+</html>
